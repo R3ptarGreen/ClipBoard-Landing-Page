@@ -1,0 +1,240 @@
+@use 'reset';
+@mixin flex($just, $item, $gap){
+    display: flex;
+    justify-content: $just;
+    align-items: $item;
+    gap: $gap;
+  }
+@mixin grid($gap){
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: $gap;
+  grid-auto-flow: dense;
+}
+$cyan: hsl(171, 66%, 44%);  
+$blue: hsl(233, 100%, 69%);
+$gray: hsl(210, 10%, 33%);
+$light-gray: hsl(201, 11%, 66%);
+
+.header{
+  background-image: url(/Assets/images/bg-header-desktop.png);
+  background-size: cover;
+  margin-bottom: 5em;
+  &__figure{
+    @include flex(center, center, 0);
+    padding-top: 4em;
+    margin-bottom: 2em;
+  }
+  &__h1{
+    text-align: center;
+    font-size: 3rem;
+    color: $gray;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+  &__p{
+    text-align: center;
+    color: $light-gray;
+    margin-bottom: 1.5em;
+  }
+}
+.main{
+  &__section{
+    text-align: center;
+    margin-bottom: 5em;
+  }
+  &__h2{
+    font-size: 2em;
+    color: $gray;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+  &__p{
+    color: $light-gray
+  }
+  &__article{
+    margin-bottom: 5em;
+    text-align: center
+  }
+  &__article--grid{
+    @include grid(3em);
+  }
+  &__figure--left{
+    grid-column: span 2;
+    @include flex(center, center, 0)
+  }
+  &__img--left{
+    width: 100%;
+    
+  }
+  &__aside{
+    grid-column: span 2;
+    text-align: left;
+    display: grid;
+    padding: 3em;
+  }
+  &__h3{
+    font-size: 1.5rem;
+    color: $gray;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+  }
+  &__figure--center{
+    max-width: 55em;
+    margin: 0 auto;
+  }
+  &__img--center{
+    width: 100%;
+  }
+  &__container-tools{
+    @include grid(0.75em);
+    padding: 0 5em;
+    margin-bottom: 10em;
+  }
+  &__tools{
+    padding: 0 1em;
+  }
+  .tools__figure{
+    margin-bottom: 1em;
+  }
+  &__blacklist{
+    grid-column: span 1;
+  }
+  &__text{
+    grid-column: span 1;
+  }
+  &__preview{
+    grid-column: span 1;
+  }
+  &__figure--fang{
+    @include grid(1em);
+    padding: 0 2em;
+    margin-bottom: 10em;
+  }
+  &__img--fang{
+    place-self: center;
+  }
+  &__article--button{
+    margin-bottom: 2em;
+  }
+}
+.footer{
+  background-color: hsla(0, 0%, 50%, 0.1);
+  &__section--grid{
+    @include grid(2em);
+    padding-top: 1em;
+    margin-bottom: 1em;
+  }
+  &__figure{
+    grid-column: auto / span 2;
+    place-self: center;
+    @include flex(center, center, 0)
+  }   
+  &__img{
+    max-width: 50%;
+  }
+  &__ul{
+    grid-column: auto / span 3;
+    @include flex(start, start, 1.25em);
+    flex-wrap: wrap;
+  }
+  &__li{
+    margin-left: 2.5em;
+  }
+  &__link{
+    color: $gray;
+    &:hover{
+      color: $cyan;
+    }
+  }
+  &__figure--social{
+    grid-column: auto / span 2;
+    @include flex(start, center, 1em);
+    padding-left: 3em;
+  }
+  &__i{
+    &:hover{
+      color: $cyan;
+    }
+  }
+}
+.container-button{
+  @include flex(center, center, 1em);
+  text-align: center;
+}
+.button{
+  width: 12em;
+  padding: 0.75em;
+  border-radius: 2rem;
+  color: white;
+  font-weight: 600;
+}
+.button--cyan{
+  background-color: $cyan;
+  &:hover{
+    opacity: 75%;
+  }
+}
+.button--blue{
+  background-color: $blue;
+  &:hover{
+    opacity: 75%;
+  }
+}
+.attribution { font-size: 11px; text-align: center;}
+.attribution a { color: hsl(228, 45%, 44%); }
+@media (max-width: 480px) {
+  .header{
+    background-image: url(/Assets/images/bg-header-mobile.png);
+  }
+  .container-button{
+    width: 100%;
+    display: block;
+  }
+  .button{
+    margin: 1em auto;
+  }
+  .main{
+    &__aside{
+      text-align: center;
+    }
+    &__h3{
+      margin-top: 2em;
+    }
+    &__img--fang{
+      margin-bottom: 3em;
+    }
+  }
+  .tools__figure{
+    margin-top: 2em;
+  }
+  .footer{
+    &__section--grid{
+      display: block;
+    }
+    &__figure{
+      width: 100%
+    }
+    &__img{
+      place-self: center;
+      width: 4rem;
+    }
+    &__ul{
+      margin-top: 2em;
+      display: block;
+      text-align: center;
+      gap: 2rem;
+    }
+    &__li{
+      margin: 0;
+    }
+    &__link{
+      margin-top: 2em;
+    }
+    &__figure--social{
+      padding: 0;
+      justify-content: center;
+      margin-top: 4em;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "work-files",
+  "version": "1.0.0",
+  "description": "Project to improve my skills using SCSS and CSS",
+  "main": "index.js",
+  "scripts": {
+    "scss": "sass -w SCSS:CSS"
+  },
+  "author": "Edgar Mendez",
+  "license": "ISC"
+}
